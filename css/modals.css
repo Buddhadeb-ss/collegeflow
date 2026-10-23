@@ -1,0 +1,284 @@
+/* ==========================================================================
+   CollegeFlow — Modal Dialogs & Apple-Style Sheets
+   ========================================================================== */
+
+/* Modal Backdrop */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: var(--bg-backdrop);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-md);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-normal);
+}
+
+.modal-backdrop.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Modal Window */
+.modal-window {
+  background: var(--bg-surface-elevated);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-default);
+  box-shadow: var(--shadow-lg);
+  width: 100%;
+  max-width: 520px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform: scale(0.96) translateY(8px);
+  transition: transform var(--transition-normal);
+}
+
+.modal-backdrop.is-open .modal-window {
+  transform: scale(1) translateY(0);
+}
+
+.modal-window-lg {
+  max-width: 660px;
+}
+
+/* Modal Header */
+.modal-header {
+  padding: var(--space-lg) var(--space-xl) var(--space-md);
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-md);
+}
+
+.modal-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.modal-title {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+.modal-subtitle {
+  font-size: 12.5px;
+  color: var(--text-secondary);
+}
+
+.modal-close-btn {
+  background: var(--bg-surface-subtle);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xs);
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.modal-close-btn:hover {
+  background: var(--bg-surface-hover);
+  color: var(--text-primary);
+}
+
+/* Modal Body */
+.modal-body {
+  padding: var(--space-xl);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+/* Apple Segmented Control */
+.segmented-control {
+  display: flex;
+  background: var(--bg-surface-subtle);
+  padding: 3px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+  gap: 2px;
+}
+
+.segmented-btn {
+  flex: 1;
+  text-align: center;
+  padding: 6px 10px;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background: transparent;
+  border: none;
+  border-radius: calc(var(--radius-sm) - 3px);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.segmented-btn.is-active {
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  font-weight: 600;
+  box-shadow: var(--shadow-xs);
+}
+
+/* Color Picker Swatches */
+.color-picker-grid {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.color-swatch-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  position: relative;
+  transition: transform var(--transition-fast), border-color var(--transition-fast);
+}
+
+.color-swatch-btn:hover {
+  transform: scale(1.12);
+}
+
+.color-swatch-btn.is-selected {
+  border-color: var(--text-primary);
+  transform: scale(1.1);
+}
+
+.color-swatch-btn::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.color-swatch-btn[data-color="blue"] { background: #0071E3; }
+.color-swatch-btn[data-color="purple"] { background: #AF52DE; }
+.color-swatch-btn[data-color="amber"] { background: #FF9500; }
+.color-swatch-btn[data-color="indigo"] { background: #5856D6; }
+.color-swatch-btn[data-color="teal"] { background: #30B0C7; }
+.color-swatch-btn[data-color="rose"] { background: #FF2D55; }
+.color-swatch-btn[data-color="emerald"] { background: #34C759; }
+.color-swatch-btn[data-color="slate"] { background: #8E8E93; }
+
+/* Slot List in Manager Modal */
+.slot-manager-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.slot-item-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 10px 12px;
+  background: var(--bg-surface-subtle);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  transition: border-color var(--transition-fast);
+}
+
+.slot-item-card:hover {
+  border-color: var(--border-default);
+}
+
+.slot-reorder-handle {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.slot-inputs-group {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  flex: 1;
+}
+
+.slot-inputs-group input[type="time"] {
+  padding: 6px 8px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  border-radius: var(--radius-xs);
+  border: 1px solid var(--border-default);
+  background: var(--bg-surface);
+  color: var(--text-primary);
+}
+
+.slot-name-input {
+  flex: 1;
+  padding: 6px 10px;
+  font-size: 13px;
+  border-radius: var(--radius-xs);
+  border: 1px solid var(--border-default);
+  background: var(--bg-surface);
+  color: var(--text-primary);
+}
+
+.slot-break-toggle {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11.5px;
+  color: var(--text-secondary);
+}
+
+/* Modal Footer */
+.modal-footer {
+  padding: var(--space-md) var(--space-xl);
+  border-top: 1px solid var(--border-subtle);
+  background: var(--bg-surface-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+}
+
+.modal-footer-right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+/* Status Alert in Modal */
+.modal-alert-box {
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 12.5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+}
+
+.modal-alert-box.danger {
+  background: var(--danger-bg);
+  border: 1px solid var(--danger-border);
+  color: var(--danger-text);
+}
+
+.modal-alert-box.info {
+  background: var(--accent-light);
+  border: 1px solid rgba(0, 113, 227, 0.2);
+  color: var(--accent-text);
+}

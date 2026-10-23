@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>CollegeFlow — Apple-Inspired College Timetable</title>
+  <meta name="description" content="A clean, Apple-inspired weekly college timetable spreadsheet with recurring schedules, date overrides, and custom time slots.">
+  <meta name="theme-color" content="#F5F5F7">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230071E3'><rect x='3' y='4' width='18' height='18' rx='4'/><path d='M16 2v4M8 2v4M3 10h18' stroke='white' stroke-width='2'/></svg>">
+
+  <!-- Inter & SF-style fallback Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Application Stylesheets -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/timetable.css">
+  <link rel="stylesheet" href="css/modals.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Apple Translucent Header -->
+    <header class="app-header">
+      <div class="header-inner">
+        <!-- Brand -->
+        <a href="#" class="brand" aria-label="CollegeFlow Home">
+          <div class="brand-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+              <line x1="16" y1="2" x2="16" y2="6"/>
+              <line x1="8" y1="2" x2="8" y2="6"/>
+              <line x1="3" y1="10" x2="21" y2="10"/>
+              <path d="M8 14h.01"/>
+              <path d="M12 14h.01"/>
+              <path d="M16 14h.01"/>
+              <path d="M8 18h.01"/>
+              <path d="M12 18h.01"/>
+            </svg>
+          </div>
+          <div class="brand-text">
+            <span class="brand-title">CollegeFlow</span>
+            <span class="brand-subtitle">Weekly Schedule</span>
+          </div>
+        </a>
+
+        <!-- Center Week Navigator -->
+        <nav class="week-navigator" aria-label="Week navigation">
+          <button type="button" class="nav-arrow-btn" id="prevWeekBtn" title="Previous Week (Left Arrow)" aria-label="Previous week">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+
+          <div class="date-picker-wrapper">
+            <button type="button" class="week-label-btn" id="weekLabelBtn" title="Click to jump to a specific date">
+              <span class="week-calendar-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              </span>
+              <span id="weekRangeDisplay">September 21–27, 2026</span>
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color: var(--text-tertiary);"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <input type="date" id="hiddenDatePicker" class="date-picker-input" aria-label="Jump to specific date" />
+          </div>
+
+          <button type="button" class="nav-today-btn" id="todayBtn" title="Jump to Current Week (T)">Today</button>
+
+          <button type="button" class="nav-arrow-btn" id="nextWeekBtn" title="Next Week (Right Arrow)" aria-label="Next week">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </nav>
+
+        <!-- Header Actions -->
+        <div class="header-actions">
+          <button type="button" class="btn btn-subtle" id="btnEditSlots" title="Edit start & end times, add or reorder slots (E)">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>Edit Time Slots</span>
+          </button>
+
+          <button type="button" class="btn btn-subtle" id="btnSemesterSettings" title="Semester dates & active days">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            <span>Semester</span>
+          </button>
+
+          <button type="button" class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle dark/light mode">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Workspace -->
+    <main class="main-content">
+      <!-- Sub-Bar Info -->
+      <div class="sub-bar">
+        <div class="sub-bar-left">
+          <button type="button" class="semester-pill" id="semesterPillBtn" onclick="document.getElementById('btnSemesterSettings').click()" title="Click to edit semester start/end dates">
+            <span class="semester-pill-dot"></span>
+            <span id="semesterPillText">Fall 2026</span>
+          </button>
+          <span class="week-stat-badge" id="weekStatText">Week 5 of 17</span>
+        </div>
+        <div class="sub-bar-right">
+          <span class="hint-text">Tip: Click any cell to add or edit classes • Arrow keys navigate weeks</span>
+        </div>
+      </div>
+
+      <!-- Timetable Spreadsheet Grid Root -->
+      <div id="timetableRoot">
+        <!-- Rendered dynamically by js/timetable.js -->
+      </div>
+    </main>
+
+    <!-- Modal Sheets Container -->
+    <div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true">
+      <div id="modalContainer"></div>
+    </div>
+  </div>
+
+  <!-- Main ES Module Bootstrap -->
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

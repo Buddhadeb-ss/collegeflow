@@ -1,0 +1,179 @@
+/* ==========================================================================
+   CollegeFlow — Design Variables & Apple Aesthetic Tokens
+   ========================================================================== */
+
+:root {
+  /* System Font Stack */
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Inter, Arial, sans-serif;
+  --font-mono: "SF Mono", Menlo, Monaco, Consolas, "Courier New", monospace;
+
+  /* Spacing Scale */
+  --space-2xs: 4px;
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 16px;
+  --space-lg: 20px;
+  --space-xl: 24px;
+  --space-2xl: 32px;
+  --space-3xl: 40px;
+
+  /* Corner Radiuses (Apple Standard) */
+  --radius-xs: 6px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-full: 9999px;
+
+  /* Animation */
+  --ease-apple: cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 220ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 350ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Light Theme (Default Apple Light) */
+  --bg-app: #F5F5F7;
+  --bg-surface: #FFFFFF;
+  --bg-surface-elevated: #FFFFFF;
+  --bg-surface-subtle: #F9F9FA;
+  --bg-surface-hover: #F2F2F7;
+  --bg-translucent: rgba(255, 255, 255, 0.82);
+  --bg-backdrop: rgba(0, 0, 0, 0.25);
+
+  --border-subtle: rgba(0, 0, 0, 0.06);
+  --border-default: rgba(0, 0, 0, 0.10);
+  --border-strong: rgba(0, 0, 0, 0.18);
+  --grid-border: #E5E5EA;
+
+  --text-primary: #1D1D1F;
+  --text-secondary: #6E6E73;
+  --text-tertiary: #86868B;
+  --text-quaternary: #AEAEC2;
+
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.12), 0 4px 12px rgba(0, 0, 0, 0.06);
+
+  --accent: #0071E3;
+  --accent-hover: #0077ED;
+  --accent-light: #EBF5FF;
+  --accent-text: #0071E3;
+
+  --danger: #FF3B30;
+  --danger-bg: #FFEBEE;
+  --danger-border: #FFCDD2;
+  --danger-text: #D32F2F;
+
+  --success: #34C759;
+  --success-bg: #E8F5E9;
+  --warning: #FF9500;
+  --warning-bg: #FFF3E0;
+
+  /* Apple Subtle Pastel Subject Badges (Light) */
+  --tag-blue-bg: #EDF5FF;
+  --tag-blue-text: #0B63CE;
+  --tag-blue-border: #CCE2FE;
+
+  --tag-purple-bg: #F4EEFD;
+  --tag-purple-text: #7334BE;
+  --tag-purple-border: #E5D5FB;
+
+  --tag-amber-bg: #FEF6EB;
+  --tag-amber-text: #A75502;
+  --tag-amber-border: #FBE2C1;
+
+  --tag-indigo-bg: #EFF1FD;
+  --tag-indigo-text: #414AD3;
+  --tag-indigo-border: #D1D7FB;
+
+  --tag-teal-bg: #E8F8F7;
+  --tag-teal-text: #0C7A78;
+  --tag-teal-border: #C7EFEA;
+
+  --tag-rose-bg: #FDF0F3;
+  --tag-rose-text: #B81B3C;
+  --tag-rose-border: #F9CAD5;
+
+  --tag-emerald-bg: #ECF8F1;
+  --tag-emerald-text: #097A48;
+  --tag-emerald-border: #C8EED7;
+
+  --tag-slate-bg: #F1F3F6;
+  --tag-slate-text: #475263;
+  --tag-slate-border: #D8DFE8;
+}
+
+/* Dark Theme (Apple Dark Mode) */
+[data-theme="dark"] {
+  --bg-app: #000000;
+  --bg-surface: #1C1C1E;
+  --bg-surface-elevated: #2C2C2E;
+  --bg-surface-subtle: #161618;
+  --bg-surface-hover: #262629;
+  --bg-translucent: rgba(28, 28, 30, 0.85);
+  --bg-backdrop: rgba(0, 0, 0, 0.7);
+
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-default: rgba(255, 255, 255, 0.12);
+  --border-strong: rgba(255, 255, 255, 0.22);
+  --grid-border: #2C2C2E;
+
+  --text-primary: #F5F5F7;
+  --text-secondary: #98989D;
+  --text-tertiary: #6E6E73;
+  --text-quaternary: #48484A;
+
+  --shadow-xs: 0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.7);
+
+  --accent: #2997FF;
+  --accent-hover: #47A7FF;
+  --accent-light: rgba(41, 151, 255, 0.16);
+  --accent-text: #64B5F6;
+
+  --danger: #FF453A;
+  --danger-bg: rgba(255, 69, 58, 0.16);
+  --danger-border: rgba(255, 69, 58, 0.35);
+  --danger-text: #FF6B6B;
+
+  --success: #30D158;
+  --success-bg: rgba(48, 209, 88, 0.16);
+  --warning: #FF9F0A;
+  --warning-bg: rgba(255, 159, 10, 0.16);
+
+  /* Apple Subtle Pastel Subject Badges (Dark Mode) */
+  --tag-blue-bg: rgba(41, 151, 255, 0.14);
+  --tag-blue-text: #70B6FF;
+  --tag-blue-border: rgba(41, 151, 255, 0.28);
+
+  --tag-purple-bg: rgba(175, 82, 222, 0.14);
+  --tag-purple-text: #C78FF5;
+  --tag-purple-border: rgba(175, 82, 222, 0.28);
+
+  --tag-amber-bg: rgba(255, 159, 10, 0.14);
+  --tag-amber-text: #FFC062;
+  --tag-amber-border: rgba(255, 159, 10, 0.28);
+
+  --tag-indigo-bg: rgba(94, 92, 230, 0.14);
+  --tag-indigo-text: #A8A6FF;
+  --tag-indigo-border: rgba(94, 92, 230, 0.28);
+
+  --tag-teal-bg: rgba(100, 210, 255, 0.14);
+  --tag-teal-text: #70E2FF;
+  --tag-teal-border: rgba(100, 210, 255, 0.28);
+
+  --tag-rose-bg: rgba(255, 55, 95, 0.14);
+  --tag-rose-text: #FF7B9B;
+  --tag-rose-border: rgba(255, 55, 95, 0.28);
+
+  --tag-emerald-bg: rgba(48, 209, 88, 0.14);
+  --tag-emerald-text: #69E28B;
+  --tag-emerald-border: rgba(48, 209, 88, 0.28);
+
+  --tag-slate-bg: rgba(142, 142, 147, 0.14);
+  --tag-slate-text: #C7C7CC;
+  --tag-slate-border: rgba(142, 142, 147, 0.28);
+}
